@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head><title>Love Letter to Justin Babe</title></head>
+
+
+<body>
+
+    <!-- Part F -->
+    <h1>Send Your Love to Justin</h1>
+    <img src="../images/justin4.gif">
+
+
+    <form action='process_letter.php' method='GET'>
+        
+        <!-- Part G -->
+        Full Name: <input name="fullname" />
+        <br>
+        
+        Age: <input name="age" type="number" min="0" max="120"/>
+        <br>
+        
+        Gender:
+        <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <br>
+
+        
+        Relationship Status (please be truthful):
+        <br>
+        <input type="radio" name="status" value="single">Single<br>
+        <input type="radio" name="status" value="attached">Attached<br>
+        <input type="radio" name="status" value="complicated">Complicated<br>
+
+        
+        Favorite Justin Songs:<br>
+        
+        <input type="checkbox" name="songs[]" value="sorry">Sorry<br>
+        
+        <input type="checkbox" name="songs[]" value="baby">Baby<br>
+        
+        <input type="checkbox" name="songs[]" value="boyfriend">Boyfriend<br>
+        
+        <input type="checkbox" name="songs[]" value="letmeloveyou">Let Me Love You<br>
+        
+        <input type="checkbox" name="songs[]" value="idontcare">I Don't Care<br>
+        
+        Message to Justin:
+        <br>
+        <textarea rows="3" cols="50"></textarea>
+        <br>
+
+        
+        <button type="submit">Send My Love to Justin</button>
+
+    </form>
+
+    <!-- Part H -->
+    <!-- Hyperlink BACK to justin.html -->
+    <!-- <hr> is a Horizontal Line element - it spans 100% across the width of the browser window -->
+    <hr>
+    <a href="../justin.html">Back to Justin Fan Page</a>
+
+</body>
+
+</html>
