@@ -10,7 +10,7 @@
         <form>
       
             <!-- Complete the input field for textbox -->    
-            Animal Names :
+            Animal Names : <input name="names" />
                 
 
 
@@ -20,12 +20,16 @@
             
             <!-- Complete the input field for radio buttons -->    
                 
-            Type of Animal :
-            
-            
-            
-            
-            
+            Type of Animal : <br />
+
+            <input type="radio" name="type" value="Elephant" />Elephant<br>
+
+            <input type="radio" name="type" value="Tiger" />Tiger<br>
+
+            <input type="radio" name="type" value="Lion" />Lion<br>
+
+            <input type="radio" name="type" value="Penguin" />Penguin<br>
+
             
                 <br/>   
                 <br/>   
@@ -33,9 +37,9 @@
             <!-- Complete the input filed for checkboxes -->
             Health Check:
             
-
-
-
+            <input type="checkbox" name="healthcheck[]" value="active" />active
+            <input type="checkbox" name="healthcheck[]" value="eating" />eating
+            <input type="checkbox" name="healthcheck[]" value="moving" />moving
 
 
             <br/>   
@@ -45,7 +49,11 @@
             Zoo Nursey Room  :
                 <br/>
              
-
+            <select name="room">
+                <option value="1">Room 1</option>
+                <option value="2">Room 2</option>
+                <option value="3">Room 3</option>
+            </select>
 
 
 
@@ -54,8 +62,8 @@
               
             <!-- A Submit and a Reset button -->
            
-
-
+            <input type="submit">
+            <input type="reset">
 
         </form>  
         <br>
@@ -64,7 +72,7 @@
 
         <!-- A link to Feeding times -->
         
-        Animal Feeding Time: click 
+        Animal Feeding Time: <a href="feeding.html">click</a>
 
 
         
