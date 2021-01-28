@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> My Little Zoo </title>
+    </head>    
+
+    <body>
+        <h2> New Baby Animals </h2>
+
+        <!-- upon clicking submit, it will call process.php, via GET -->
+        <form >
+      
+            <!-- Complete the input field for textbox -->    
+            Animal Name :
+                <input type="text"  name="babyName"/>
+                <br/>   
+                <br/>   
+            
+            <!-- Complete the input field for radio buttons -->    
+                
+            Type of Animal :
+                <br/>
+                <input type="radio" name="animal" value="elephant" /> Elephant
+                <br/>
+                <input type="radio" name="animal" value="tiger" /> Tiger
+                <br/>
+                <input type="radio" name="animal" value="lion" /> Lion
+                <br/>
+                <input type="radio" name="animal" value="penguin" /> Penguin
+                <br/>   
+                <br/>   
+
+            <!-- Complete the input filed for checkboxes -->
+            Health Check:
+                <input type="checkbox" name="health[]" value="active" /> active
+                <input type="checkbox" name="health[]" value="eating" /> eating
+                <input type="checkbox" name="health[]" value="moving" /> moving
+            
+            <br/>   
+            <br/>   
+        
+            <!-- How do I do a drop down list -->
+            Zoo Nursery Room  :
+                <br/>
+                <select name="room">
+                    <option value="room1" selected> Room 1 </option>
+                    <option value="room2"> Room 2 </option>
+                    <option value="room3"> Room 3 </option>
+                </select>
+                <br/>
+                <br/>
+              
+            <!-- I want a Submit and a Reset button -->
+            <input type="submit" />
+            <input type="reset" />
+            
+        </form>  
+        <br>
+        <br>
+        <br>
+        
+        Animal Feeding Time: click <a href="feeding.html">here</a>
+    </body>
+
+
+
+</html>
