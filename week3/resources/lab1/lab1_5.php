@@ -4,6 +4,10 @@
 
     # Write code here
 
+    $tempInC = ($tempInF - 32) * 5 / 9;
+
+//    echo $tempInF . " F = " . $tempInC . " C";
+
     # End of code
     
     echo "$tempInF F = $tempInC C";
