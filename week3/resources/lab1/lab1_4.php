@@ -7,6 +7,14 @@
  
     # Write code here
 
+    # save $d as $e for now
+    $e = $d;
+
+    $d = $c;
+    $c = $b;
+    $b = $a;
+    $a = $e;
+
     # End of code
     
     echo "after rotation: a = $a, b = $b, c = $c, d = $d";   
