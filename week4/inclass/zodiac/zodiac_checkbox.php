@@ -38,7 +38,7 @@
                 // YOUR CODE GOES HERE
                 if ($zodiacs_traits != null && sizeof($zodiacs_traits) > 0) {
                     foreach ($zodiacs_traits as $zodiac => $traits) {
-                        echo "<input type='checkbox' name='zodiac[]' value=\'$zodiac\'>$zodiac</input><br>";
+                        echo "<input type='checkbox' name='zodiacs[]' value=$zodiac>$zodiac</input><br>";
                     }
                 }
 
@@ -55,8 +55,30 @@
 
              // YOUR CODE GOES HERE
 
-           
-                 
+            if (isset($_POST["zodiacs"])) {
+                $selected_zodiacs = $_POST["zodiacs"];
+
+                if ($selected_zodiacs == null || sizeof($selected_zodiacs) <= 0) {
+                    echo "No selection made.";
+                } else {
+                    if ($zodiacs_traits != null && sizeof($zodiacs_traits) > 0) {
+                        foreach ($zodiacs_traits as $zodiac => $traits) {
+                            foreach ($selected_zodiacs as $selected_zodiac) {
+                                if ($selected_zodiac == $zodiac) {
+                                    echo "Traits for $selected_zodiac:<br>";
+                                    echo "<table border='1px'>";
+                                    if ($traits != null && sizeof($traits) > 0) {
+                                        foreach ($traits as $trait) {
+                                            echo "<tr><td>$trait</td></tr>";
+                                        }
+                                    }
+                                    echo "</table><br>";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             
         ?>
 
