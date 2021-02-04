@@ -28,7 +28,7 @@
         if ($countries != null && sizeof($countries) > 0) {
             $count = 1;
             foreach ($countries as $country) {
-                echo "<input type='checkbox'> $country </input>";
+                echo "<input type='checkbox' name='countries[]'> $country </input>";
                 if ($count % 5 == 0)
                     echo '<br>';
                 $count++;

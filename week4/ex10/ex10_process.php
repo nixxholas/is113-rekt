@@ -23,8 +23,8 @@
 			Vietnam		Hanoi
 	*/
 	
-
-
+    $capitals["Myanmar"] = "Naypyidaw";
+    $capitals["Vietnam"] = "Hanoi";
 
 ?>
 <html>
@@ -46,12 +46,22 @@
 		4.  If there is no country selected (i.e. user did not check any checkbox), print "No country selected."
 	-->
 	<?php
-	
 
+    echo '<table>';
+    echo '<thead>';
+    echo '<td><b>Country</b></td>';
+    echo '<td><b>Capital</b></td>';
+    echo '</thead>';
+    foreach ($capitals as $key => $value) {
+        echo "<tr><td>$key</td><td>$value</td></tr>";
+    }
+    echo '</table></hr>';
 
+    $countries = $_GET["countries"];
 
-
-	
+    if ($countries == null or sizeof($countries) == 0) {
+        echo 'No country selected.';
+    }
 	?>
 	
 	
