@@ -78,6 +78,8 @@
                         }
                     }
                 }
+            } else {
+                echo 'No selection made';
             }
             
         ?>
