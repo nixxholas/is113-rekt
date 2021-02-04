@@ -12,10 +12,14 @@
             $zodiacs = ["Rat", "Ox", "Tiger", "Rabbit", "Dragon"];
    
             // Complete PHP Code below using for loop
-          
 
-
-
+            if ($zodiacs != null && sizeof($zodiacs) > 0){
+                echo '<ol>';
+                foreach ($zodiacs as $zodiac) {
+                    echo "<li>$zodiac</li>";
+                }
+                echo '</ol>';
+            }
 
             echo "<hr>";
 
