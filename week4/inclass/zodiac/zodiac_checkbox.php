@@ -36,10 +36,11 @@
             <?php
 
                 // YOUR CODE GOES HERE
-              
-
-
-
+                if ($zodiacs_traits != null && sizeof($zodiacs_traits) > 0) {
+                    foreach ($zodiacs_traits as $zodiac => $traits) {
+                        echo "<input type='checkbox' name='zodiac[]' value=\'$zodiac\'>$zodiac</input><br>";
+                    }
+                }
 
             ?>
 
