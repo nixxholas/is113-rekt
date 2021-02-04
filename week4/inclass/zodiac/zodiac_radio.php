@@ -34,11 +34,11 @@
             <?php
 
                 // YOUR CODE GOES HERE
-                
-
-
-
-
+                if ($zodiacs != null && sizeof($zodiacs) > 0) {
+                    foreach ($zodiacs as $zodiac) {
+                        echo "<input type='radio' name='zodiac' value=\"$zodiac\">$zodiac</input><br>";
+                    }
+                }
 
             ?>
             <br>
@@ -49,10 +49,21 @@
         <?php
 
              // YOUR CODE GOES HERE
-         
 
+            if (isset($_POST["zodiac"])) {
+                $selected_zodiac = $_POST["zodiac"];
 
+                if ($selected_zodiac != null) {
+                    echo "Traits for $selected_zodiac: ";
 
+                    if ($zodiacs != null && sizeof($zodiacs) > 0) {
+                        foreach ($zodiacs_traits as $zodiac => $traits) {
+                            if ($selected_zodiac == $zodiac)
+                                echo $traits;
+                        }
+                    }
+                }
+            }
              
             
         ?>
