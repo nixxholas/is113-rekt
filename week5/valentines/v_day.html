@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Valentine's Day </title>
+    </head>    
+
+    <body>
+        <h3 style="color:red"> ***** Valentine's Day 2021  ***** </h3>
+
+        <form action="v_process.php" method="GET">
+      
+            <table border="1">
+                <tr> 
+                    <th colspan="2"> Details </th>
+                </tr>
+                <tr>
+                    <td> Name :</td>
+                    <td> <input type="text"  name="name"/> </td>
+                </tr>
+                <tr>
+                    <td>What I hope to get : </td>
+                    <td><input type="checkbox" name="items[]" value="Roses" /> Roses
+                        <br/>
+                        <input type="checkbox" name="items[]" value="Balloons" /> Balloons
+                        <br/>
+                        <input type="checkbox" name="items[]" value="Pineapple Tarts" /> Pineapple Tarts
+                        <br/>
+                        <input type="checkbox" name="items[]" value="Surprise" /> Surprise
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td> Where to Go: </td>
+                    <td> 
+                        <input type="radio" name="togo" value="Flyer" /> Flyer
+                        <br/>
+                        <input type="radio" name="togo" value="Mall" /> Malls
+                        <br/>
+                        <input type="radio" name="togo" value="Restaurant" /> Restaurants
+                        <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>My Favourite Color : </td>
+                    <td>
+                        <select name="color[]" multiple>
+                            <option value="Blue"> Blue </option>
+                            <option value="Red"> Red </option>
+                            <option value="Gold"> Gold </option>
+                            <option value="Silver"> Silver </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Secret Message : </td>
+                    <td><textarea type="text" name="msg"></textarea> </td></td>
+                </tr>
+                <tr>
+                    <td>Print No. of times: <input type="text" name="printNo" size=2" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" />
+                    <input type="reset" />
+                    </td>
+                </tr>
+            </table>
+        </form>  
+    
+    </body>
+
+</html>
