@@ -64,6 +64,18 @@ function getCourses($student_name, $students) {
     return null;
 }
 
+function getSortedClassesList($day, $classes) {
+    $day_sched = ['0830' => [], '1000' => [], '1200' => [], '1330' => [], '1500' => [], '1630' => []];
+
+    foreach ($classes as $class) {
+        if ($class[2] == $day) {
+            $day_sched[$class[3]] = $class;
+        }
+    }
+
+    return array_values($day_sched);
+}
+
 function getArrayOfClassesPerDay($courses) {
     $day_arr = ["MON" => [],"TUE" => [],"WED" => [],"THU" => [],"FRI" => []];
 
@@ -106,13 +118,13 @@ function getArrayOfClassesPerDay($courses) {
 
         // Define the head first
         echo "<thead>";
-        echo "<td colspan='1'><td>";
-        echo "<td colspan='3'>08:30am - 10:00am<td>";
-        echo "<td colspan='3'>10:00am - 11:30am<td>";
-        echo "<td colspan='3'>12:00nn - 1:30pm<td>";
-        echo "<td colspan='3'>1:30pm - 3:00pm<td>";
-        echo "<td colspan='3'>3:00pm - 4:30pm<td>";
-        echo "<td colspan='3'>4:30pm - 6:00pm<td>";
+        echo "<th colspan='1'></th>";
+        echo "<th colspan='3'>08:30am - 10:00am</th>";
+        echo "<th colspan='3'>10:00am - 11:30am</th>";
+        echo "<th colspan='3'>12:00nn - 1:30pm</th>";
+        echo "<th colspan='3'>1:30pm - 3:00pm</th>";
+        echo "<th colspan='3'>3:00pm - 4:30pm</th>";
+        echo "<th colspan='3'>4:30pm - 6:00pm</th>";
         echo "</thead>";
 
         // Settle the days first
@@ -122,12 +134,29 @@ function getArrayOfClassesPerDay($courses) {
         foreach ($classPerDay as $day => $classes) {
             echo "<tr>";
             echo "<td colspan='1'>$day</td>";
-            echo "<td colspan='3' style='text-align: center'></td>";
-            echo "<td colspan='3' style='text-align: center'></td>";
-            echo "<td colspan='3' style='text-align: center'></td>";
-            echo "<td colspan='3' style='text-align: center'></td>";
-            echo "<td colspan='3' style='text-align: center'></td>";
-            echo "<td colspan='3' style='text-align: center'></td>";
+
+            if (count($classes) > 0) {
+                $classes_today = getSortedClassesList($day, $classes);
+
+                while (count($classes_today) > 0) {
+                    $slot = array_shift($classes_today);
+                    if ($slot == [])
+                        echo "<td colspan='3' style='text-align: center'></td>";
+                    else {
+                        echo "<td colspan='" . (3 * $slot[4]) . "' style='text-align: center'>$slot[1]</br>$slot[0]</td>";
+                        
+                        if ($slot[4] > 1) {
+                            for ($i = 0; $i < $slot[4] - 1; $i++) {
+                                array_shift($classes_today);
+                            }
+                        }
+                    }
+                }
+            } else {
+                for ($i = 1; $i < 7; $i++) {
+                    echo "<td colspan='3' style='text-align: center'></td>";
+                }
+            }
             echo "</tr>";
         }
         echo "</table>";
