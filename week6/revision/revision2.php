@@ -20,8 +20,12 @@
         <?php
 
             // YOUR CODE GOES HERE
-            
 
+            foreach ($restaurants as $restaurant => $restaurant_info) {
+                echo "<input type='radio' name='restaurant' value=$restaurant>$restaurant</input>&nbsp";
+                echo "<a href=$restaurant_info[3]>link</a>";
+                echo "</br>";
+            }
 
         ?>
         <br>
@@ -35,13 +39,21 @@
         //var_dump($_POST);
         
         // YOUR CODE GOES HERE
-        if (isset($_POST["click"])){
+        if (isset($_POST["click"]) && isset($_POST["restaurant"])){
             
-          
+          $selected_restaurant = $_POST["restaurant"];
 
+          echo "Restaurant selected: $selected_restaurant</br>";
 
+          if (array_key_exists($selected_restaurant, $restaurants)) {
+              $restaurant_data = $restaurants[$selected_restaurant];
 
-
+              if (substr_count($restaurant_data[0], '$') > 1) {
+                  echo "+++ EXPENSIVE +++";
+              } else {
+                  echo "*** cheap ... ***";
+              }
+          }
 
             
         }
