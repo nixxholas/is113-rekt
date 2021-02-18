@@ -1,7 +1,7 @@
 <?php
 /* 
-    Name:  
-    Email: 
+    Name: Nicholas Chen Han Wei
+    Email: hwchen.2020@sis.smu.edu.sg
 */
 
 // $students is an Array of:

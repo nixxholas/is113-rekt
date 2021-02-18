@@ -1,7 +1,7 @@
 <?php
 /* 
-    Name:  
-    Email: 
+    Name: Nicholas Chen Han Wei
+    Email: hwchen.2020@sis.smu.edu.sg
 */
     function is_divisible_by($num, $n) {
         return (($num % $n == 0) == 1) ? 'YES' : 'NO';

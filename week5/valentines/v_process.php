@@ -45,18 +45,33 @@
             echo "<h3> Dearest $name</h3>";
             echo "Valentine's Day is 14 Feb 2020 (Sunday). <br>";
 
-            echo "Just to let you know I hope to get:";
             // Print out the items
+
+            echo "Just to let you know I hope to get: ";
+
+            echo '<ul>';
+            foreach ($items as $item) {
+                echo "<li>$item</li>";
+            }
+            echo '</ul>';
 
             $togo_place_arr = [  "Flyer" => ["Singapore Flyer"],
                 "Mall" => ["ION", "Bugis+", "Plaza Singapura"],
                 "Restaurant" => ["Jacks Place", "TungLok", "Koufu"]
             ];
 
-
             // string concat function
             echo "We can go to: ";
 
+            echo '<ul>';
+            foreach ($togo_place_arr as $place => $places) {
+                if ($place === $togo) {
+                    foreach ($places as $location) {
+                        echo "<li>$location</li>";
+                    }
+                }
+            }
+            echo '</ul>';
 
             echo "<br>In case you still do not know, here's my favourite colors :";
 
