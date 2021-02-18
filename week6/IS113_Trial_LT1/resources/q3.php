@@ -47,6 +47,12 @@ function getStudentNames($students) {
     $arr = [];
     // Part A
     // YOUR CODE GOES HERE
+    foreach ($students as $student_arr) {
+        if (isset($student_arr["name"]))
+            array_push($arr, $student_arr["name"]);
+    }
+
+    return $arr;
 }
 
 ?>
@@ -60,6 +66,9 @@ function getStudentNames($students) {
                 // YOUR CODE GOES HERE
                 $student_names = getStudentNames($students); // DO NOT MODIFY THIS LINE
                 // YOUR CODE CONTINUES HERE
+                foreach ($student_names as $student_name) {
+                    echo "<option value=$student_name>$student_name</option>";
+                }
             ?>
         </select>
         <input type='submit' value='Show Timetable' />
