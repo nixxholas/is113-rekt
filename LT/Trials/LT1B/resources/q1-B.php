@@ -21,7 +21,13 @@ $people = [
             <tr>
                 <th>Person</th>
             </tr>
-
+            <?php
+                if (count($people) > 0) {
+                    foreach ($people as $person => $fName) {
+                        echo "<tr><td><label><input type='checkbox' name='selected[]' value=$person>$fName</label></td></tr>";
+                    }
+                }
+            ?>
             <tr>
                 <td>
                     <input type='submit'>
