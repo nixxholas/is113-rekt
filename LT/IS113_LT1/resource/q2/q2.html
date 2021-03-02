@@ -5,55 +5,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Lenovo Carbon Gen 8</title>
+    <title>Lenovo Carbon Gen 8</title>
 </head>
 <body>
 
 <form action="q2_process.php" method="POST">
-	
-	<table border="1" width="380">
-		<tr>
-			<td colspan="2" align="center"><img src="images/logo.jpg" width="300" height="62"><br/>
-			<img src="images/carbon_g8.jpg" align="center"> <br/>
-			 <font style="font-family:verdana; size:2">ThinkPad X1 Carbon Gen 8</font></td>
-		</tr>
 
-		<tr>
-			<th>Memory</th><td>8GB RAM</td>
-		</tr>
-		<tr>
-			<th>Storage</th><td>256GB SSD</td>
-		</tr>
-		<tr>
-			<th>Privacy Filter</th><td>Standard</td>
-		</tr>
-		<tr >
-			<td colspan="2" align="center"><font style="color:red"><strong>S$ 1,669.00 (w/GST S$ 1,785.83 )</strong></font><br/>
-<font style="font-size: 13px">with 2 year international & local warranty</font></td>
-		</tr>
-		<tr>
-			<th colspan="2">Options</th>
-		</tr>
-		
-		<tr>
-			<td colspan="2">
-				<table> 
+    <table border="1" width="380">
+        <tr>
+            <td colspan="2" align="center"><img src="images/logo.jpg" width="300" height="62"><br/>
+                <img src="images/carbon_g8.jpg" align="center"> <br/>
+                <font style="font-family:verdana; size:2">ThinkPad X1 Carbon Gen 8</font></td>
+        </tr>
 
-				<!-- Complete the "Options" table here -->
-		
-				<!-------Upgrade to 16GB RAM, $323.00  -------->
-				<!-------Upgrade to 16GB RAM + 512GB SSD, $433.00 -------->
-				<!-------Upgrade to Premium Privacy Filter, $48.00 -------->
-				<!-------2 years, free -------->
-				<!-------3 years, $168.00 -------->
+        <tr>
+            <th>Memory</th>
+            <td>8GB RAM</td>
+        </tr>
+        <tr>
+            <th>Storage</th>
+            <td>256GB SSD</td>
+        </tr>
+        <tr>
+            <th>Privacy Filter</th>
+            <td>Standard</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><font style="color:red"><strong>S$ 1,669.00 (w/GST S$ 1,785.83
+                )</strong></font><br/>
+                <font style="font-size: 13px">with 2 year international & local warranty</font></td>
+        </tr>
+        <tr>
+            <th colspan="2">Options</th>
+        </tr>
 
-				<!-------------------------------------------------->
+        <tr>
+            <td colspan="2">
+                <table border="1">
+                    <thead>
+                    <th>No.</th>
+                    <th>Description</th>
+                    <th>Price w/o GST</th>
+                    </thead>
 
-				</table>
+                    <!-- Complete the "Options" table here -->
 
-	   		</td>
-		</tr>
-	</table>
+                    <!-------Upgrade to 16GB RAM, $323.00  -------->
+                    <!-------Upgrade to 16GB RAM + 512GB SSD, $433.00 -------->
+                    <!-------Upgrade to Premium Privacy Filter, $48.00 -------->
+                    <!-------2 years, free -------->
+                    <!-------3 years, $168.00 -------->
+
+                    <!-------------------------------------------------->
+                    <tr>
+                        <td>
+                            <label>1<input type="checkbox" name="upg1" value="0"/></label>
+                        </td>
+                        <td>Upgrade to 16GB RAM</td>
+                        <td>$323.00</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>2<input type="checkbox" name="upg2" value="1"/></label>
+                        </td>
+                        <td>Upgrade to 16GB RAM + 512GB SSD</td>
+                        <td>$433.00</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>3<input type="checkbox" name="upg3" value="2"/></label>
+                        </td>
+                        <td>Upgrade to Premium Privacy Filter</td>
+                        <td>$48.00</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td colspan="2">
+                            Warranty:
+                            <select name="warranty">
+                                <option name="warranty" value="2">2 years, free</option>
+                                <option name="warranty" value="3">3 years, $168.00</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+							<input type="submit" />
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
 
 </form>
 
