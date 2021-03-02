@@ -21,6 +21,13 @@ function generateRandomSets($quantity) {
     
     // Part A
     // YOUR CODE GOES HERE
+    for ($i = 0; $i < $quantity; $i++) {
+        $newSet = [];
+        for ($j = 0; $j < $num_numbers; $j++) {
+            array_push($newSet, rand(0, 9));
+        }
+        array_push($result, $newSet);
+    }
     
     return $result;
 }
@@ -51,14 +58,23 @@ function calculate($random_sets, $lucky_number) {
 
     // Part B
     // YOUR CODE GOES HERE
+    foreach ($random_sets as $random_set) {
+        $match_count = 0;
+        foreach ($random_set as $number) {
+            if ($number == $lucky_number)
+                $match_count += 1;
+        }
+        array_push($result, $match_count);
+    }
     
     return $result;
 }
 
 // Form Processing
 // YOUR CODE GOES HERE
-
-
+$quantity = $_POST["quantity"];
+$lucky_number = $_POST["lucky_number"];
+$bet_amount = $_POST["bet_amount"];
 
 // Generate # of sets (each set contains 3 numbers)
 $random_sets = generateRandomSets($quantity); // DO NOT MODIFY THIS LINE
@@ -70,6 +86,9 @@ $result = calculate($random_sets, $lucky_number); // DO NOT MODIFY THIS LINE
 <!DOCTYPE html>
 <html>
 <body>
-
+<?php
+    echo "<h1>Lucky Number: $lucky_number</h1>";
+    echo "<h1>Bet Amount: $bet_amount</h1>"
+?>
 </body>
 </html>
