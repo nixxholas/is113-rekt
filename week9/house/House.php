@@ -23,11 +23,12 @@ class House
 
     // Define a function to fulfill this constructor
     // ("HDB", 4, "1010", "Montreal Drive")
-    public function __construct($type, $no_of_bedroom, $size, $location) {
+    public function __construct($type, $no_of_bedroom, $size, $location, $price = NULL) {
         $this->type = $type;
         $this->no_of_bedroom = $no_of_bedroom;
         $this->size = $size;
         $this->location = $location;
+        $this->price = $price != NULL ? $price : 0;
     }
 
     public function getType(): string
