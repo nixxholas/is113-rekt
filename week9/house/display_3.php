@@ -19,12 +19,14 @@ $house_arr1[2] = $new_house3;
 // Change the price of $new_house1 vs. $house_arr1[1] 
 // What is the difference?
 
+echo "new_house1: " . $new_house1->getPrice() . "<br>";
+echo "house_arr1[1]: " . $house_arr1[1]->getPrice() . "<br>";
+$new_house1->setPrice(300000);
+$house_arr1[1]->setPrice(100000);
+echo "new_house1: " . $new_house1->getPrice() . "<br>";
+echo "house_arr1[1]: " . $house_arr1[1]->getPrice() . "<br>";
 
-
-
-
-
-
+# Apparently they are deep copies
 
 
 #
