@@ -15,13 +15,22 @@
 
 class House
 {
-    private $type;
-    private $no_of_bedroom;
-    private $size;
-    private $location;
-    private $price;
+    private string $type;
+    private int $no_of_bedroom;
+    private int $size;
+    private string $location;
+    private float $price;
 
-    public function getType()
+    // Define a function to fulfill this constructor
+    // ("HDB", 4, "1010", "Montreal Drive")
+    public function __construct($type, $no_of_bedroom, $size, $location) {
+        $this->type = $type;
+        $this->no_of_bedroom = $no_of_bedroom;
+        $this->size = $size;
+        $this->location = $location;
+    }
+
+    public function getType(): string
     {
         return $this->type;
     }
@@ -39,6 +48,11 @@ class House
     public function getLocation()
     {
         return $this->location;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
     }
 
     public function setPrice($price)

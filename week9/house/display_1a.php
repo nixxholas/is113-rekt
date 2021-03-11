@@ -10,12 +10,15 @@
     // 2. Display Part I  
     // Complete the codes
     echo "House 1 : <br>";
-    echo "Type:     <br>";
-    echo "Size:     <br>";
-    echo "Location:  <br>";
+    echo "Type:     " . $new_house1->getType() . "<br>";
+    echo "Size:     " . $new_house1->getSize() . "<br>";
+    echo "Location: " . $new_house1->getLocation() . "<br>";
     echo "Price:  <br> <br>";
     
     // 2. Set the price
+    $price = 360150;
+    $new_house1->setPrice($price);
+
     // Complete the codes
     echo "After set price ... <br>";
 
@@ -26,10 +29,10 @@
     
     // 3. Display Part II
     
-    echo "Price: $ . "<br>";
-    echo "Payment Per Month over 20 years : $ <br>";
+    echo "Price: $$price <br>";
+    echo "Payment Per Month over 20 years : $" . $new_house1->PaymentPerMonth(20) . "<br>";
 
-    $cost_per_sq_feet = number_format(     ,4);
+    $cost_per_sq_feet = number_format($new_house1->CostPerSqFeet() ,4);
     echo "Price per sq feet $" .    $cost_per_sq_feet  . "<br>";
  
 
