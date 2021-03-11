@@ -43,7 +43,7 @@ class House
 
     public function getSize()
     {
-        return $this->no_of_bedroom;
+        return $this->size;
     }
 
     public function getLocation()

@@ -19,13 +19,21 @@ foreach ($new_houses as $flat) {
     array_push($new_houses_arr, new House($flat[0], $flat[1], $flat[2], $flat[3]));
 }
 
-display_houses($new_houses_arr);
-
 // 2. Set prices
 
 
+// Display the houses (before)
+
+display_houses($new_houses_arr);
+
+$prices = [450000, 650000, 1250000, 800700, 20005000];
+for ($i = 0; $i < sizeof($new_houses_arr); $i++) {
+    $new_houses_arr[$i]->setPrice($prices[$i]);
+}
+
 // Display the houses (after)
 
+display_houses($new_houses_arr);
 
 #
 # This function displays the result of an indexed array of House objects
