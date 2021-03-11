@@ -67,7 +67,7 @@ class House
 
     public function CostPerSqFeet()
     {
-        return $this->price / $this->size;
+        return ($this->price == NULL || $this->size == NULL) ? 0 : ($this->price / $this->size);
     }
 }
 
