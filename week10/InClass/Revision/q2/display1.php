@@ -4,11 +4,11 @@
 
   $new_rest = new Restaurant ("Fat Cow", "$$$$$", "https://www.fatcow.com.sg/");
   
-  echo "Restaurant is : "  ;
+  echo "Restaurant is : {$new_rest->getName()}";
   echo "<br>";
-  echo "Expensive : " . ;
+  echo "Expensive : {$new_rest->getExpensive()}";
   echo "<br>";
   $url = $new_rest->getURL();
-  echo "URL is : " . ;
+  echo "URL is : <a href={$new_rest->getURL()}>{$new_rest->getName()}</a>";
 
 ?>
