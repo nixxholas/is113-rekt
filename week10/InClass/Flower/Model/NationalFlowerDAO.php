@@ -44,10 +44,13 @@ class NationalFlowerDAO {
 
     // Return : an indexed array of NationalFlower objects
     public  function retrieveAll() {
-      
+        $res = [];
 
+        foreach ($this->flowers as $flower) {
+            $res[$flower->getCountry()] = $flower->getFlower();
+        }
 
-
+        return $res;
     }
 
     // To get a list of countries from the database

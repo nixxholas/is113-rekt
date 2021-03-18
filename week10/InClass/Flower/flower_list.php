@@ -1,13 +1,13 @@
 <?php
     // 1. autoload the classes
-   
+   spl_autoload_register(
+       function($class) {
+           require_once "model/$class.php";
+       }
+   );
   
     // 2. Get the list of flower objects from DAO.
-    
-
-
-
-
+    $nationalFlowerDAO = new NationalFlowerDAO();
 ?>
 
 
@@ -22,18 +22,10 @@
        // 3. Display the data in the required format
 
         echo "<table border='1'>";
-        echo "<tr> 
-                <th> Country </th>
-                <th> National Flower </th>
-            </tr>";
-       
-
-
-
-
-
-            
-        
+        echo "<tr><th> Country </th><th> National Flower </th></tr>";
+        foreach ($nationalFlowerDAO->retrieveAll() as $country => $flower) {
+            echo "<tr><td>$country</td><td>$flower</td></tr>";
+        }
         echo "</table>";
 
     ?>
