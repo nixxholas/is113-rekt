@@ -1,10 +1,13 @@
 <?php
-
     // 1. autoload the classes
-    
+    spl_autoload_register(
+        function($class) {
+            require_once "model/$class.php";
+        }
+    );
 
-
-
+    // 2. Get the list of flower objects from DAO.
+    $nationalFlowerDAO = new NationalFlowerDAO();
 ?>
 
 <!DOCTYPE html>
@@ -25,17 +28,23 @@
     <?php
 
         // 2. Happens only when clicking on Find button
-        if (isset($_GET["submit"])){
+        if (isset($_GET["submit"]) && isset($_GET["flowerstr"])){
 
             //3. Get the input string from user
-            
+            $flowerCatcher = $_GET["flowerstr"];
 
-            // 4. Get the list of Flower objects from DAO.
-            
+            if ($flowerCatcher !== "") {
+                // 4. Get the list of Flower objects from DAO.
+                echo "National Flowers which contains <b>$flowerCatcher</b>";
+                $result = $nationalFlowerDAO->getCountryWithSimilarFlowers($flowerCatcher);
 
-            
-            
-
+                echo "<table border='1'>";
+                echo "<thead><th>Country</th><th>Flower</th></thead>";
+                foreach ($result as $resItem) {
+                    echo "<tr><td>{$resItem->getCountry()}</td><td>{$resItem->getFlower()}</td></tr>";
+                }
+                echo "</table>";
+            }
         }
 
     ?>

@@ -43,7 +43,7 @@ class NationalFlowerDAO {
     }
 
     // Return : an indexed array of NationalFlower objects
-    public  function retrieveAll() {
+    public function retrieveAll() {
         $res = [];
 
         foreach ($this->flowers as $flower) {
@@ -81,19 +81,26 @@ class NationalFlowerDAO {
     // that are similar to what is in the input paramenter
     // Return :an indexed array of NationalFlower objects
     public function getCountryWithSimilarFlowers($str){
-    
         $result = [];
-        
 
+        if ($str != "")
+            foreach ($this->flowers as $flower) {
+                /**
+                 * https://www.php.net/manual/en/function.stripos.php
+                 * needle
+                    Note that the needle may be a string of one or more characters.
 
+                    Prior to PHP 8.0.0, if needle is not a string, it is converted to an integer
+                 * and applied as the ordinal value of a character. This behavior is deprecated as of
+                 * PHP 7.3.0, and relying on it is highly discouraged. Depending on the intended
+                 * behavior, the needle should either be explicitly cast to string, or an explicit
+                 * call to chr() should be performed.
+                 */
+                if (strpos($flower->getFlower(), strtoupper($str)) !== false) {
+                    $result[] = $flower;
+                }
+            }
 
-
-
-
-
-
-
-        
         return $result;
 
     }
