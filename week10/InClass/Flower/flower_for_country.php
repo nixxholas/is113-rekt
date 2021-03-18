@@ -1,13 +1,16 @@
 <?php
 
     // 1. autoload the classes
-    
-  
+    spl_autoload_register(
+        function($class) {
+            require_once "model/$class.php";
+        }
+    );
+
     // 2. Get the list of flower objects from DAO.
+    $nationalFlowerDAO = new NationalFlowerDAO();
     
    // var_dump($country_arr);
-
-  
 
 ?>
 
@@ -26,14 +29,12 @@
                 // 3. The list of countries should not be hardcoded.
                 //    Get the list from DAO.
                 //    if user already made a selection, it should be highlighted.
-               
 
-
-
-
-
-
-
+                echo "<select name='country'>";
+                foreach ($nationalFlowerDAO->retrieveCountryList() as $country) {
+                    echo "<option value='$country'>$country</option>";
+                }
+                echo "</select>";
 
             ?>
             <input type="submit" name="submit" value="Get National Flower">
@@ -42,18 +43,10 @@
     <?php
 
         // 4. Display result after selection.
-
-        
-
-
-
-
-
-
-
-
-
-        
+        if (isset($_GET["country"])) {
+            $country = $_GET["country"];
+            echo "<br />The national flower for $country is {$nationalFlowerDAO->getFlowerByCountry($country)}";
+        }
 
     ?>
 

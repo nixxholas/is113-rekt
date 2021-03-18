@@ -56,19 +56,25 @@ class NationalFlowerDAO {
     // To get a list of countries from the database
     // Return : an indexed array of string (country name) 
     public function retrieveCountryList(){
-       
-       
-        
+        $res = [];
+
+        foreach ($this->flowers as $flower) {
+            $res[] = $flower->getCountry();
+        }
+
+        return $res;
     }
 
     // To retrieve the national flower for a country
     // Return : a string (name of flower) 
     public function getFlowerByCountry($country){
-        
-       
-        
+        for ($i = 0; $i < sizeof($this->flowers); $i++) {
+            if ($this->flowers[$i]->getCountry() == $country) {
+                return $this->flowers[$i]->getFlower();
+            }
+        }
 
-        return $result;
+        return null;
     }
     
     // To retrieve the list of NationalFlowers objects that have flowers
