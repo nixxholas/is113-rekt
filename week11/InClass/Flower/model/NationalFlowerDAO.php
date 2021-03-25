@@ -127,7 +127,16 @@ class NationalFlowerDAO
         return $result;
     }
 
-
+    public function UpdateNationalFlower($country, $flower) {
+        $sql = "UPDATE NATIONAL_FLOWER set flower = :flower WHERE country = :country";
+        $stmt = $this->connectionManager->getConnection()->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->bindParam(":country", $country, PDO::PARAM_STR);
+        $stmt->bindParam(":flower", $flower, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->closeCursor();
+        return true;
+    }
 }
 
 ?>
