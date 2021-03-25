@@ -61,7 +61,7 @@ class NationalFlowerDAO
         while ($row = $stmt->fetch()) {
             $flower = new NationalFlower($row['country'], $row['flower']);
             if ($flower->getCountry() == $country) {
-                return $flower;
+                return $flower->getFlower();
             }
         }
 
