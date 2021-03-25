@@ -18,10 +18,25 @@ class NationalFlowerDAO
         $stmt->bindParam(":flower", $flower, PDO::PARAM_STR);
         $stmt->execute();
 
-        $result = $row = $stmt->fetch();
+        while ($row = $stmt->fetch()) {
+            if ($row['country'] == $country && $row['flower'] == $flower) {
+                $stmt->closeCursor();
+                return true;
+            }
+        }
         $stmt->closeCursor();
 
-        return $result;
+        return false;
+    }
+
+    public function createNationalFlower($country, $flower) {
+        $sql = "insert into NATIONAL_FLOWER value (:country, :flower)";
+        $stmt = $this->connectionManager->getConnection()->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->bindParam(":country", $country, PDO::PARAM_STR);
+        $stmt->bindParam(":flower", $flower, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->closeCursor();
     }
 
     // Return : an indexed array of NationalFlower objects 

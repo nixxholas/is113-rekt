@@ -28,8 +28,9 @@
 
             $country = $_GET["country"];
             $flower = $_GET["flower"];
-            if ($dao->checkNationalFlowersExist($country, $flower)) {
-
+            if (!$dao->checkNationalFlowersExist($country, $flower)) {
+                $dao->createNationalFlower($country, $flower);
+                echo "Record created successfully.";
             } else {
                 echo "Country : $country <br/>";
                 echo "Flower : $flower <br/>";
