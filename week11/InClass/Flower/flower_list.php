@@ -64,6 +64,8 @@
     Click <a href="flower_for_country.php">here</a> <br/>
     To search for similar National Flowers. 
     Click <a href="flower_similar.php">here</a> <br/>
+    To create a new record.
+    Click <a href="flower_create.php">here</a> <br/>
     </body>
 
 </html>
