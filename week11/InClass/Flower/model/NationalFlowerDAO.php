@@ -10,6 +10,20 @@ class NationalFlowerDAO
         $this->connectionManager = new ConnectionManager();
     }
 
+    public function checkNationalFlowersExist($country, $flower) {
+        $sql = "select * from NATIONAL_FLOWER where country = :country AND flower = :flower";
+        $stmt = $this->connectionManager->getConnection()->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->bindParam(":country", $country, PDO::PARAM_STR);
+        $stmt->bindParam(":flower", $flower, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $row = $stmt->fetch();
+        $stmt->closeCursor();
+
+        return $result;
+    }
+
     // Return : an indexed array of NationalFlower objects 
     public function retrieveAll()
     {
