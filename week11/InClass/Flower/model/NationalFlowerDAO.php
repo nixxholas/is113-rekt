@@ -74,17 +74,19 @@ class NationalFlowerDAO
     // input parameter : $str e.g ROSE
     public function getCountryWithSimilarFlowers($str)
     {
-        $result = [];
+        $sql = "select * from NATIONAL_FLOWER where flower LIKE :flower";
+        $stmt = $this->connectionManager->getConnection()->prepare($sql);
+        $str = "%" . $str . "%";
+        $stmt->bindParam(':flower', $str, PDO::PARAM_STR);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
 
-        foreach ($this->retrieveAll() as $item) {
-
-            if (strpos($item->getFlower(), $str) !== false) {
-                $result[] = $item;
-            }
+        // $item  = an NationalFlower object
+        while ($row = $stmt->fetch()) {
+            $result[] = new NationalFlower($row['country'], $row['flower']);
         }
 
         return $result;
-
     }
 
 
