@@ -31,10 +31,15 @@ class NationalFlowerDAO
     // Return : an indexed array of string (country name) 
     public function retrieveCountryList()
     {
+        $sql = "select distinct(country) from NATIONAL_FLOWER";
+        $stmt = $this->connectionManager->getConnection()->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+
         $result = [];
         // $item  = an NationalFlower object 
-        foreach ($this->retrieveAll() as $item) {
-            $result[] = $item->getCountry();  // a string
+        while ($row = $stmt->fetch()) {
+            $result[] = $row['country'];  // a string
         }
 
         return $result;
@@ -59,7 +64,6 @@ class NationalFlowerDAO
     // that are similar to what is in the input paramenter
     // Return :an indexed array of NationalFlower objects
     // input parameter : $str e.g ROSE
-
     public function getCountryWithSimilarFlowers($str)
     {
         $result = [];
