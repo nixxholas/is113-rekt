@@ -24,14 +24,17 @@
     <?php
 
         if (isset($_GET["create_flower"])){
+            $dao = new NationalFlowerDAO();
 
-    
-            // YOUR CODE GOES HERE
+            $country = $_GET["country"];
+            $flower = $_GET["flower"];
+            if ($dao->checkNationalFlowersExist($country, $flower)) {
 
-
-
-
-
+            } else {
+                echo "Country : $country <br/>";
+                echo "Flower : $flower <br/>";
+                echo "Record already exists. <br/>";
+            }
         }        
 
     ?>
