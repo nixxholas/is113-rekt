@@ -24,6 +24,8 @@ class NationalFlowerDAO
             array_push($result, new NationalFlower($row['country'], $row['flower']));
         }
 
+        $stmt->closeCursor();
+
         return $result;
     }
 
@@ -41,6 +43,8 @@ class NationalFlowerDAO
         while ($row = $stmt->fetch()) {
             $result[] = $row['country'];  // a string
         }
+
+        $stmt->closeCursor();
 
         return $result;
     }
@@ -65,6 +69,8 @@ class NationalFlowerDAO
             }
         }
 
+        $stmt->closeCursor();
+
         return null;
     }
 
@@ -81,10 +87,13 @@ class NationalFlowerDAO
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
 
+        $result = [];
         // $item  = an NationalFlower object
         while ($row = $stmt->fetch()) {
             $result[] = new NationalFlower($row['country'], $row['flower']);
         }
+
+        $stmt->closeCursor();
 
         return $result;
     }
