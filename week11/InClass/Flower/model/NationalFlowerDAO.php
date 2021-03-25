@@ -39,6 +39,17 @@ class NationalFlowerDAO
         $stmt->closeCursor();
     }
 
+    public function DeleteNationalFlower($country, $flower) {
+        $sql = "delete from NATIONAL_FLOWER where country = :country AND flower = :flower";
+        $stmt = $this->connectionManager->getConnection()->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->bindParam(":country", $country, PDO::PARAM_STR);
+        $stmt->bindParam(":flower", $flower, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->closeCursor();
+        return true;
+    }
+
     // Return : an indexed array of NationalFlower objects 
     public function retrieveAll()
     {

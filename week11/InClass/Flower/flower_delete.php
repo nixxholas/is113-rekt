@@ -32,18 +32,28 @@
             
             <br/><br/>
             National Flower:
-           
+            <?php
+                if (isset($_GET["retrieve_flower"])) {
+                    $country = $_GET["country"];
 
+                    if ($country != null) {
+                        $flower = $dao->getFlowerByCountry($country);
+
+                        echo "<input name='flower' value='$flower'/>";
+                        echo "<input type='submit' name='delete_record' value='Delete Record'/>";
+                    }
+                }
+            ?>
         </form>
     </body>
 
     <?php
 
         if (isset($_GET["delete_record"]) ){
-
-    
-
-        } 
+            if ($dao->DeleteNationalFlower($_GET["country"], $_GET["flower"])) {
+                echo $_GET["country"] . " national flower " . $_GET["flower"] . " is deleted.";
+            }
+        }
     ?>
 
     <br/>
