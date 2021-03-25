@@ -31,10 +31,9 @@ class NationalFlowerDAO
     // Return : an indexed array of string (country name) 
     public function retrieveCountryList()
     {
-
         $result = [];
         // $item  = an NationalFlower object 
-        foreach ($this->flowers as $item) {
+        foreach ($this->retrieveAll() as $item) {
             $result[] = $item->getCountry();  // a string
         }
 
@@ -47,9 +46,8 @@ class NationalFlowerDAO
     //      return a string =  EDELWEISS
     public function getFlowerByCountry($country)
     {
-
         // $item  = an NationalFlower object
-        foreach ($this->flowers as $item) {
+        foreach ($this->retrieveAll() as $item) {
             if ($item->getCountry() == $country) {
                 $result = $item->getFlower();
             }
@@ -64,13 +62,9 @@ class NationalFlowerDAO
 
     public function getCountryWithSimilarFlowers($str)
     {
-
-        // indexed array of objects
-        // objects - NationalFlower Objects
-
         $result = [];
 
-        foreach ($this->flowers as $item) {
+        foreach ($this->retrieveAll() as $item) {
 
             if (strpos($item->getFlower(), $str) !== false) {
                 $result[] = $item;
