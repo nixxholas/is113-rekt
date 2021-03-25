@@ -51,13 +51,21 @@ class NationalFlowerDAO
     //      return a string =  EDELWEISS
     public function getFlowerByCountry($country)
     {
+        $sql = "select * from NATIONAL_FLOWER where country = :country";
+        $stmt = $this->connectionManager->getConnection()->prepare($sql);
+        $stmt->bindParam(':country', $country, PDO::PARAM_STR);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+
         // $item  = an NationalFlower object
-        foreach ($this->retrieveAll() as $item) {
-            if ($item->getCountry() == $country) {
-                $result = $item->getFlower();
+        while ($row = $stmt->fetch()) {
+            $flower = new NationalFlower($row['country'], $row['flower']);
+            if ($flower->getCountry() == $country) {
+                return $flower;
             }
         }
-        return $result; // string
+
+        return null;
     }
 
     // To retrieve the list of NationalFlowers objects that have flowers
