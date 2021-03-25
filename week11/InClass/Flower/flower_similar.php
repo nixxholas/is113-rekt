@@ -38,21 +38,24 @@
             
             //var_dump($flower_obj_arr);
 
-            echo "National Flowers which contains : <b> " . $_GET["flowerstr"] . "</b> <br><br>";
-            echo "<table border='1'>
+            if (sizeof($flower_obj_arr) > 0) {
+                echo "National Flowers which contains : <b> " . $_GET["flowerstr"] . "</b> <br><br>";
+                echo "<table border='1'>
                     <tr> 
                         <th> Country </th>
                         <th> Flower </th>
                     </tr>";
 
-            foreach ($flower_obj_arr as $item){
-                echo "<tr>
+                foreach ($flower_obj_arr as $item){
+                    echo "<tr>
                         <td> {$item->getCountry()} </td>
                         <td> {$item->getFlower()} </td>
                       </tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "No flowers found matching $str.";
             }
-            echo "</table>";
-
         }
 
 
