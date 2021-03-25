@@ -8,13 +8,13 @@
 
     $pencilcase = new PencilCase("Kitty",$pen_arr);
 
-    $pen_arr =  ;
+    $pen_arr = $pencilcase->getPens();
 
     echo "Do I have a Red Pen ? <br>";
 
-    $found =   ;
+    $found = false;
     foreach($pen_arr as $pen){
-        if (    == "Red")
+        if ($pen->getColor() == "Red")
             $found = true;
     }
 
