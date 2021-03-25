@@ -52,6 +52,7 @@
         if (isset($_GET["delete_record"]) ){
             if ($dao->DeleteNationalFlower($_GET["country"], $_GET["flower"])) {
                 echo $_GET["country"] . " national flower " . $_GET["flower"] . " is deleted.";
+                $_GET["retrieve_flower"] = 'Retrieve Flower';
             }
         }
     ?>
