@@ -10,13 +10,13 @@
     
     $pencilcase = new PencilCase("Disney",[$pen1, $pen2]);
 
-    echo "I have a " . . " pencil case. <br>";
+    echo "I have a " . $pencilcase->getTheme() . " pencil case. <br>";
 
     $pen_arr = $pencilcase->getPens();
 
     echo "With pens : <br>";
     foreach($pen_arr as $pen){
-        echo " " . " - " .    ;
+        echo $pen->getType() . " - " . $pen->getColor();
         echo "<br>";
     }
 
