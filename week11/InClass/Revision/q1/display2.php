@@ -16,7 +16,7 @@
 
     echo "With pens : <br>";
     foreach($pen_arr as $pen){
-        echo $pen->getType() . " - " . $pen->getColor();
+        echo "{$pen->getType()}" . " - " . $pen->getColor();
         echo "<br>";
     }
 
