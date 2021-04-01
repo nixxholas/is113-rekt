@@ -27,7 +27,11 @@ class TaskDAO {
         $result = [];
         while($row = $stmt->fetch()) {
             $result[] = new Task ($row['week_day'], $row['task']);
-            }
+        }
+
+        if($stmt->errno) {
+            $errorflag=true;
+        }
 
         /// Step  7 : free up resources
         $stmt->closeCursor();

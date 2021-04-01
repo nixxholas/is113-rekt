@@ -1,5 +1,6 @@
 <?php
-    echo "Name: " . $_POST["name"];
+    session_start();
+    echo "Name: " . $_SESSION["name"];
     echo "<br>";
-    echo "Age: " . $_POST["age"];
+    echo "Age: " . $_SESSION["age"];
 ?>

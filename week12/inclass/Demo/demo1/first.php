@@ -1,4 +1,8 @@
 <html>
+<?php
+header("Location: https://google.com");
+exit;
+?>
   <body>
     <form action='another.php'>
         Secret: <input type="text" name="secret">

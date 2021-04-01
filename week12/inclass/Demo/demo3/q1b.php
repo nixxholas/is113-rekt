@@ -25,6 +25,8 @@
     <?php
         if (isset($_GET["logout"])){
             // remove all session variables
+            if (isset($_SESSION["username"]))
+                unset($_SESSION["username"]);
             session_unset();
 
             // destroy the session
