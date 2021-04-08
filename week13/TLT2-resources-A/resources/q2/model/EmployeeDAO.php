@@ -63,30 +63,23 @@ class EmployeeDAO {
   // This method retrieves all the employees 
   // returns an array of Employee objects
   public function getAllEmployees() {
-    
     $sql = "SELECT * FROM employee";
+    $res = [];
+
     # == Part B : ENTER CODE HERE == 
-    
+    $connMgr = new ConnectionManager();
+    $conn = $connMgr->getConnection();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    while ($row = $stmt->fetch()) {
+      $res[] = new Employee( $row['empId'], $row['name'],$row['password']);
+    }
 
+    $stmt = null;
+    $conn = null;
 
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return $res;
   }
 
   // This method retrieves the spouse given the empId 
