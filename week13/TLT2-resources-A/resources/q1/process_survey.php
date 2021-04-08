@@ -26,9 +26,15 @@ require_once 'model/common.php';
                 exit;
             }
             #===
+            echo "You entered: </br>";
 
             # == Part B (Display student name and preferences): ENTER CODE HERE ==
-
+            session_start();
+            echo "<table>";
+            echo "<tr></tr>";
+            echo "<tr></tr>";
+            echo "<tr></tr>";
+            echo "</table>"
             # ===
             
             # == Part B (Add a new response to the database and display status): ENTER CODE HERE ==
