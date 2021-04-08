@@ -17,17 +17,21 @@
     
             // Step 4: Prepare the SQL statement
             //         which include replace the placeholder with variables
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
         
             // Step 5: Send the query to the server
+            $stmt->execute();
                 
             // Step 6: Process the data - retrieve result row by row
+            while ($row = $stmt->fetch()) {
+                $result[] = new Course($row['stud_name'], $row['coursename'], $row['score']);
+            }
         
             /// Step  7 : free up resources
             $stmt->closeCursor();
             $pdo = null;
     
             return $result;
-    
         }
 
         public function insertCourse($name, $course, $score) {
