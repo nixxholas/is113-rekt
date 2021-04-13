@@ -6,7 +6,7 @@ if( isset($_GET['id']) ) {   // DO NOT MODIFY THIS LINE
     
     $id = $_GET['id'];       // DO NOT MODIFY THIS LINE
 
-
+    echo $id;
     // Update the corresponding request in requests database table
     // Your code goes here
 

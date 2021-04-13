@@ -7,6 +7,8 @@
         unset($_SESSION["username"]);
         session_unset();
         session_destroy();
+
+        //TODO: can inform logout here
     }
 ?>
 
