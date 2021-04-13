@@ -2,6 +2,12 @@
     require_once 'common.php';
  
     // Add code here or elsewhere in this file
+    if (isset($_POST["logout"])) {
+        session_start();
+        unset($_SESSION["username"]);
+        session_unset();
+        session_destroy();
+    }
 ?>
 
 <html>
@@ -37,10 +43,14 @@
                 if ($password == $user->getPassword()) {
                     // Authenticated, redirect
                     if ($user->getRole() == "client") {
+                        session_start();
+                        $_SESSION["username"] = $username;
                         header('location:client_view.php');
                         exit;
                     } else if ($user->getRole() == "manager") {
                         header('location:manager_view.php');
+                        session_start();
+                        $_SESSION["username"] = $username;
                         exit;
                     } else {
                         echo "Invalid Role.";
