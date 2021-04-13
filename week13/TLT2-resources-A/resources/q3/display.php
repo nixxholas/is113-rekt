@@ -100,6 +100,29 @@ function search_slot($start_time, $lectures) {
 # Part B (Put lectures into a schedule): ENTER CODE HERE == 
 function create_schedule($lectures){
     $room_allocation = [];
+
+    $room_number = 1;
+    while (sizeof($lectures) > 0) {
+        $room_name = "Room-$room_number";
+        $cur_time = 0;
+        $room_allocation[$room_name] = [];
+
+        $cur_lecture = array_pop($lectures);
+        var_dump($cur_lecture) . "<br>";
+//        if ($cur_time + $cur_lecture->getDuration());
+    }
+
+//    foreach ($lectures as $room => $l) {
+//        $room_name = "Room-$room";
+//        echo $l->getId();
+//        echo var_dump($l) . "<br><br>";
+//
+//        if (array_key_exists($room_name, $room_allocation)) {
+//            array_push($room_allocation[$room_name], $l);
+//        } else {
+//            $room_allocation[$room_name] = [$l];
+//        }
+//    }
     return new Schedule($room_allocation);
 }
 # ====
