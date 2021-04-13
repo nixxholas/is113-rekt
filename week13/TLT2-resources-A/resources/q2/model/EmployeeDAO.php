@@ -46,7 +46,6 @@ class EmployeeDAO {
 
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':empId', $empId, PDO::PARAM_INT);
-    
     $stmt->execute();
 
     $stmt->setFetchMode(PDO::FETCH_ASSOC);

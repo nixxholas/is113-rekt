@@ -15,15 +15,15 @@ $role = $_SESSION['role'];
 $empDao = new EmployeeDAO();
 
 if ($role == "User") {
-    $emp = $empDao->getEmployee($empDao);
+    $emp = $empDao->getEmployee($empId);
 
     echo "<table border='1'>";
     echo "<thead><th>Employee ID</th><th>Name</th><th>Spouse</th><th>Child</th></thead>";
     echo "<tr>";
-    echo "<td>$empId</td><td>$emp->getName()</td>";
+    echo "<td>$empId</td><td>{$emp->getName()}</td>";
     $spouse = $empDao->getSpouse($empId);
     if ($spouse != null) {
-        echo "<td>$spouse->getSpouseName()</td>";
+        echo "<td>{$spouse->getSpouseName()}</td>";
     } else {
         echo "<td></td>";
     }
