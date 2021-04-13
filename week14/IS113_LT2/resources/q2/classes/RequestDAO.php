@@ -87,10 +87,14 @@ class RequestDAO {
         $stmt = $conn->prepare($sql);
 
         // Your code goes here
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":status", $status);
                 
         $status = $stmt->execute(); // DO NOT MODIFY THIS LINE
 
         // Your code goes here
+        $stmt = null;
+        $conn = null;
         
         return $status;
     }
