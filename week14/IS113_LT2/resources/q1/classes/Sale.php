@@ -24,6 +24,13 @@
         public function getDollarsReceived() {
             # Add Code Here
             $total = 0.0;
+
+            if ($this->saleLineItems != null && sizeof($this->saleLineItems) > 0) {
+                foreach ($this->saleLineItems as $saleLineItem) {
+                    $total += ($saleLineItem->getQty() * $saleLineItem->getPricePerUnit());
+                }
+            }
+
             return $total;
         }
     }
