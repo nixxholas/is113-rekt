@@ -6,6 +6,10 @@
     function create_study_groups($students, $min_size, $max_size, $min_gpa){
         $study_groups = [];
 
+        if (sizeof($students) < $min_size) {
+            return null;
+        }
+
 //        $maxGroupCount = sizeof($students) / $min_size;
 //        $minGroupCount = sizeof($students) / $max_size;
 
@@ -38,18 +42,77 @@
                 }
             }
 
-            // Push Good students until full
-            while (sizeof($group->getMembers()) < $max_size) {
-                if (sizeof($good_students) > 0) {
-                    $group->addMember(array_pop($good_students));
-                } else {
-                    break;
+            // Detect the last two groups
+            $remaining_students = sizeof($good_students) + sizeof($bad_students);
+
+            if ($remaining_students > 0 && $min_size > 0 && ($remaining_students / $min_size) <= 2
+                && $min_size != $max_size && $min_size == 1) {
+                // Create them together instead.
+                $group_count += 1;
+                $secondGroup = new StudyGroup("G" . $group_count, []);
+
+                // Push Good students until full
+                while (sizeof($group->getMembers()) < $max_size) {
+                    if (sizeof($good_students) > 0) {
+                        if (sizeof($group->getMembers()) <= sizeof($secondGroup->getMembers()))
+                            $group->addMember(array_pop($good_students));
+                        else
+                            $secondGroup->addMember(array_pop($good_students));
+                    } else {
+                        break;
+                    }
+                }
+
+                // Push Bad Students until full
+                while (sizeof($group->getMembers()) < $max_size) {
+                    if (sizeof($bad_students) > 0) {
+                        if (sizeof($group->getMembers()) <= sizeof($secondGroup->getMembers()))
+                            $group->addMember(array_pop($bad_students));
+                        else
+                            $secondGroup->addMember(array_pop($bad_students));
+                    } else {
+                        break;
+                    }
+                }
+
+                $study_groups[] = $secondGroup;
+            } else {
+                // Push Good students until full
+                while (sizeof($group->getMembers()) < $max_size) {
+                    if (sizeof($good_students) > 0) {
+                        $group->addMember(array_pop($good_students));
+                    } else {
+                        break;
+                    }
                 }
             }
 
             $study_groups[] = $group;
             $group_count += 1;
         }
+
+//        for ($i = 0; $i < sizeof($study_groups); $i++) {
+//            $group = $study_groups[$i];
+//            $size = sizeof($group->getMembers());
+//
+//            // If a group has too little members
+//            if ($size < $min_size) {
+//                echo $size . "<br>";
+//                echo $group->getId();
+//                $members_to_take = ($min_size - $size) + 1;
+//                while ($members_to_take > 0) {
+//                    // Take from another random
+//                    for ($j = 0; $j < sizeof($study_groups); $j++) {
+//                        $donor_group = $study_groups[$j];
+//                        if ($i != $j && sizeof($donor_group->getMembers()) > $min_size) {
+//                            $donor_group->getMembers();
+//                        }
+//                    }
+//
+//                    $members_to_take += 1;
+//                }
+//            }
+//        }
 
         return $study_groups;
     }
