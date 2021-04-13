@@ -132,33 +132,23 @@ class EmployeeDAO {
 
   // This method updates the password for an empId
   // returns a boolean value
-  public function updatePassword($empId, $new_password) {
-    
+  public function updatePassword($empId, $new_password): bool
+  {
     $sql = "UPDATE employee set password =:password where empId = :empId";
-    # == Part D : ENTER CODE HERE == 
 
+    $connMgr = new ConnectionManager();
+    $conn = $connMgr->getConnection();
 
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':empId', $empId, PDO::PARAM_INT);
+    $stmt->bindParam(':password', $new_password, PDO::PARAM_STR);
 
+    $executed = $stmt->execute();
+    if (!$executed) {
+      echo $stmt->errorInfo()[2];
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    return true;
+    return $executed;
   }
 
 

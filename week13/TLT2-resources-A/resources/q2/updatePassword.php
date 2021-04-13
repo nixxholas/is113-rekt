@@ -28,6 +28,13 @@ echo "</form>";
 
 function generateRandomPassword(){
     # == Part C : ENTER CODE HERE ==
-    return password_hash((string) random_int(99999, 999999), PASSWORD_DEFAULT);
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//    $charactersLength = strlen($characters);
+    $charactersLength = 7;
+    $randomString = '';
+    for ($i = 0; $i < $charactersLength; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
 }
 ?>
