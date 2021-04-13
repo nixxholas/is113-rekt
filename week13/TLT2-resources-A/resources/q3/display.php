@@ -47,8 +47,53 @@ if (isset($_POST['operation'])){
     
 # Part A (Display the schedule): ENTER CODE HERE == 
 function display_schedule($schedule){
-    echo "<table border='1'>";
-    echo "</table>";
+    $allocations = $schedule->getRoomAllocation();
+
+    if (sizeof($allocations) > 0) {
+        $rooms = [];
+        echo "<table border='1'>";
+        echo "<tr><th></th>";
+        foreach (array_keys($allocations) as $room) {
+            echo "<th>$room</th>";
+            $rooms[$room] = 9;
+        }
+
+        $cur_time = 9;
+        while ($cur_time < 19) {
+            echo "<tr>";
+            $next_time = $cur_time + 1;
+            echo "<th>$cur_time-$next_time</th>";
+            // Iterate all the rooms
+            foreach ($rooms as $room => $last_unfilled_time) {
+                if ($cur_time == $last_unfilled_time) {
+                    $cur_slot = search_slot($last_unfilled_time, $allocations[$room]);
+
+                    if ($cur_slot == null) {
+                        echo "<td></td>";
+                        $rooms[$room] += 1;
+                    } else {
+                        echo "<td rowspan='{$cur_slot->getDuration()}'>{$cur_slot->getId()}</td>";
+                        $rooms[$room] += $cur_slot->getDuration();
+                    }
+                }
+            }
+            echo "</tr>";
+
+            $cur_time += 1;
+        }
+
+        echo "</tr>";
+        echo "</table>";
+    }
+}
+
+function search_slot($start_time, $lectures) {
+    foreach ($lectures as $lecture) {
+        if ($lecture->getStartTime() == $start_time)
+            return $lecture;
+    }
+
+    return null;
 }
 # ====
 
