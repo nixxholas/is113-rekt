@@ -20,7 +20,6 @@
                 $bad_students[] = $student;
             }
         }
-        echo sizeof($good_students);
 
         $group_count = 1;
         while (sizeof($good_students) > 0 || sizeof($bad_students) > 0) {
