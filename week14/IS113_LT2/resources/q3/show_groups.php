@@ -6,8 +6,51 @@
     function create_study_groups($students, $min_size, $max_size, $min_gpa){
         $study_groups = [];
 
+//        $maxGroupCount = sizeof($students) / $min_size;
+//        $minGroupCount = sizeof($students) / $max_size;
+
         # Add code here
         # You are free to create helper functions
+        $good_students = [];
+        $bad_students = [];
+        foreach ($students as $student) {
+            if ($student->getGPA() >= $min_gpa) {
+                $good_students[] = $student;
+            } else {
+                $bad_students[] = $student;
+            }
+        }
+        echo sizeof($good_students);
+
+        $group_count = 1;
+        while (sizeof($good_students) > 0 || sizeof($bad_students) > 0) {
+            // Create a new group
+            $group = new StudyGroup("G" . $group_count, []);
+
+            // Push 1x good student
+            $group->addMember(array_pop($good_students));
+
+            // Push Bad Students until full
+            while (sizeof($group->getMembers()) < $max_size) {
+                if (sizeof($bad_students) > 0) {
+                    $group->addMember(array_pop($bad_students));
+                } else {
+                    break;
+                }
+            }
+
+            // Push Good students until full
+            while (sizeof($group->getMembers()) < $max_size) {
+                if (sizeof($good_students) > 0) {
+                    $group->addMember(array_pop($good_students));
+                } else {
+                    break;
+                }
+            }
+
+            $study_groups[] = $group;
+            $group_count += 1;
+        }
 
         return $study_groups;
     }
