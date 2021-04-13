@@ -25,7 +25,33 @@
     </form>
     
     <?php 
-    // Add code here or elsewhere in this file
+        // Add code here or elsewhere in this file
+        if (isset($_POST["login"]) && isset($_POST["username"]) && isset($_POST["password"])) {
+            $userDao = new UserDAO();
+            $username = $_POST["username"];
+
+            $user = $userDao->get($username);
+
+            if ($user != null) {
+                $password = $_POST["password"];
+                if ($password == $user->getPassword()) {
+                    // Authenticated, redirect
+                    if ($user->getRole() == "client") {
+                        header('location:client_view.php');
+                        exit;
+                    } else if ($user->getRole() == "manager") {
+                        header('location:manager_view.php');
+                        exit;
+                    } else {
+                        echo "Invalid Role.";
+                    }
+                } else {
+                    echo "Password is not valid!";
+                }
+            } else {
+                echo "Username does not exist!";
+            }
+        }
     ?>
     </center>
 </body>
